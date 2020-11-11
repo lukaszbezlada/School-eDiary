@@ -13,4 +13,7 @@ public class Teacher extends User implements Serializable {
 
     private SubjectEnum subject;
 
+    public Teacher() {
+        //for Spring Data JPA
+    }
 }
