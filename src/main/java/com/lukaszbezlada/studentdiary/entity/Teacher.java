@@ -1,16 +1,20 @@
 package com.lukaszbezlada.studentdiary.entity;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.AllArgsConstructor;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Builder
+@SuperBuilder
+@EqualsAndHashCode (callSuper = true)
 @Data
 @AllArgsConstructor
+@Entity
+@Table(name = "teacher")
 public class Teacher extends User implements Serializable {
 
+    @Column
     private SubjectEnum subject;
 
     public Teacher() {
