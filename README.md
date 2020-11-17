@@ -7,6 +7,8 @@ TODO list:
 - layout and UI
 - adding users
 - managment users
+- adding marks by teachers
+- view school grade by students and parents
 
 What is done?
 - project structure
