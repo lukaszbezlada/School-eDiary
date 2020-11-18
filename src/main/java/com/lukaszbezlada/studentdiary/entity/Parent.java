@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@SuperBuilder
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor

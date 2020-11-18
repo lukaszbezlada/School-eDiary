@@ -6,7 +6,7 @@ import lombok.experimental.SuperBuilder;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@SuperBuilder
+
 @EqualsAndHashCode (callSuper = true)
 @Data
 @AllArgsConstructor
