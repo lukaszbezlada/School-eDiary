@@ -1,7 +1,7 @@
 package com.lukaszbezlada.studentdiary.entity;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
+
 
 import javax.persistence.*;
 import java.io.Serializable;

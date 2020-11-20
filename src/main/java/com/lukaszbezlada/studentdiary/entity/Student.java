@@ -1,7 +1,6 @@
 package com.lukaszbezlada.studentdiary.entity;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -25,4 +24,6 @@ public class Student extends User implements Serializable {
     public Student() {
         //for JPA
     }
+
+
 }
