@@ -5,17 +5,22 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @Entity
 @Table(name = "student")
-public class Student extends User implements Serializable {
+public class Student implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "id_classtype")
-    private ClassType studentClass;
+    private ClassType classType;
 
     @ManyToOne
     @JoinColumn(name = "id_parent")
@@ -24,6 +29,5 @@ public class Student extends User implements Serializable {
     public Student() {
         //for JPA
     }
-
 
 }

@@ -1,6 +1,7 @@
 package com.lukaszbezlada.studentdiary.entity;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.util.Set;
 @Builder
 @Data
 @AllArgsConstructor
+@Component
 @Entity
 @Table(name = "user")
 public class User implements Serializable {

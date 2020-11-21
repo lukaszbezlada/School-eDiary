@@ -5,13 +5,18 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-
-@EqualsAndHashCode (callSuper = true)
 @Data
 @AllArgsConstructor
 @Entity
 @Table(name = "teacher")
-public class Teacher extends User implements Serializable {
+public class Teacher implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @OneToOne
+    private User user;
 
     @Column
     private SubjectEnum subject;

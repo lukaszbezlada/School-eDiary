@@ -21,7 +21,7 @@ public class ClassType implements Serializable {
     @Column
     private String name;
 
-    @OneToMany(mappedBy = "classtype", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "classType", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Student> studentList;
 
     public ClassType() {
