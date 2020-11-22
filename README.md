@@ -2,7 +2,6 @@
 ---Project in its initial phase--- Application for teachers, students and parents. 
 
 TODO list:
-- database connection
 - validating fields in entities
 - layout and UI
 - adding users
@@ -11,5 +10,6 @@ TODO list:
 - view school grade by students and parents
 
 What is done?
+- database structure and connection
 - project structure
 - entities of users
