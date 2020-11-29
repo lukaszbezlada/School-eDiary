@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -25,6 +26,9 @@ public class Student implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_parent")
     private Parent parent;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Grade> grades;
 
     public Student() {
         //for JPA
