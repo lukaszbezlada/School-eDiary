@@ -12,5 +12,6 @@ import java.util.Optional;
 @RepositoryRestResource(path = "user")
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<Student> findByFirstName(String name);
+    Optional<User> findByFirstName(String name);
+    User findByLogin(String login);
 }
