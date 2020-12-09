@@ -1,17 +1,15 @@
 package com.lukaszbezlada.studentdiary.repository;
 
-import com.lukaszbezlada.studentdiary.entity.Student;
 import com.lukaszbezlada.studentdiary.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import java.util.List;
 
 @Transactional
-@RepositoryRestResource(path = "user")
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByFirstName(String name);
     User findByLogin(String login);
 }

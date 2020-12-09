@@ -38,9 +38,25 @@
 
 <main role="main" class="container">
 
-    <div class="starter-template">
+    <div class="starter-template" ng-controller="UserController as userControl">
         <h1>E-dziennik</h1>
-        <p class="lead">Tutaj będzie przykładowy widok.</p>
+
+        <form>
+            <input type="text" ng-model="userControl.user.login" placeholder="Login"><br>
+            <input type="text" ng-model="userControl.user.firstName" placeholder="Imię"><br>
+            <input type="text" ng-model="userControl.user.lastName" placeholder="Nazwisko"><br>
+            <button ng-click="userControl.addUser(userControl.user)">Dodaj użytkownika</button>
+        </form>
+        <ul>
+            <li ng-repeat="u in userControl.users" ng-click="userControl.loadData(u.id)">
+                {{u.login}} - {{u.firstName}}
+            </li>
+        </ul>
+
+        <div ng-show="userControl.details">
+            <h2>{{userControl.details.name}}</h2>
+            <p>Użytkownik: {{userControl.details.user}}, Imię: {{userControl.details.firstName}} </p>
+        </div>
     </div>
 
 </main>
