@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         http
                 .authorizeRequests()
-                .antMatchers("/static/**", "/css/**", "/img/**", "/js/**", "/bower_components/**").permitAll()
+                .antMatchers("/static/**", "/css/**", "/img/**", "/js/**").permitAll()
                 .antMatchers("/", "/api/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

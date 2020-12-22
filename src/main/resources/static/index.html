@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html lang="pl">
 
 <head>
     <meta charset="utf-8">
@@ -15,64 +15,61 @@
 </head>
 
 <body id="page-top">
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">E-dziennik</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<app-root>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">E-dziennik</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Użytkownicy</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Dodaj</a>
-                    <a class="dropdown-item" href="#">Zarządzaj</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<main role="main" class="container">
-
-    <div class="starter-template" ng-controller="UserController as userControl">
-        <h1>E-dziennik</h1>
-
-        <form>
-            <input type="text" ng-model="userControl.user.login" placeholder="Login"><br>
-            <input type="text" ng-model="userControl.user.firstName" placeholder="Imię"><br>
-            <input type="text" ng-model="userControl.user.lastName" placeholder="Nazwisko"><br>
-            <button ng-click="userControl.addUser(userControl.user)">Dodaj użytkownika</button>
-        </form>
-        <ul>
-            <li ng-repeat="u in userControl.users" ng-click="userControl.loadData(u.id)">
-                {{u.login}} - {{u.firstName}}
-            </li>
-        </ul>
-
-        <div ng-show="userControl.details">
-            <h2>{{userControl.details.name}}</h2>
-            <p>Użytkownik: {{userControl.details.user}}, Imię: {{userControl.details.firstName}} </p>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">Użytkownicy</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Dodaj</a>
+                        <a class="dropdown-item" href="#">Zarządzaj</a>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-</main>
+    <main role="main" class="container">
 
+        <div class="starter-template">
+            <h1>E-dziennik</h1>
 
-<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-<script type="text/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+            <form>
+                <input type="text" ng-model="userControl.user.login" placeholder="Login"><br>
+                <input type="text" ng-model="userControl.user.firstName" placeholder="Imię"><br>
+                <input type="text" ng-model="userControl.user.lastName" placeholder="Nazwisko"><br>
+                <button ng-click="userControl.addUser(userControl.user)">Dodaj użytkownika</button>
+            </form>
+            <ul>
+                <li ng-repeat="u in userControl.users" ng-click="userControl.loadData(u.id)">
+                    {{u.login}} - {{u.firstName}}
+                </li>
+            </ul>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
+            <div ng-show="userControl.details">
+                <h2>{{userControl.details.name}}</h2>
+                <p>Użytkownik: {{userControl.details.login}}, Imię: {{userControl.details.firstName}} </p>
+            </div>
+        </div>
 
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+</app-root>
 </body>
 
 </html>

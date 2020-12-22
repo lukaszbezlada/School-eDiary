@@ -29,11 +29,11 @@ public class UserController {
         return ResponseEntity.ok(allUsers);
     }
 
-    @GetMapping(path = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        return ResponseEntity.ok(user.get());
-    }
+//    @GetMapping(path = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+//        Optional<User> user = userRepository.findById(userId);
+//        return ResponseEntity.ok(user.get());
+//    }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> saveUser(@RequestBody User user) {
