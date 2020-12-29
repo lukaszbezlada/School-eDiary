@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
+@RequestMapping("/api")
 public class UserController {
 
     private UserRepository userRepository;
@@ -23,26 +24,27 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<User>> allUsers() {
         List<User> allUsers = userRepository.findAll();
         return ResponseEntity.ok(allUsers);
     }
 
-//    @GetMapping(path = "/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-//        Optional<User> user = userRepository.findById(userId);
-//        return ResponseEntity.ok(user.get());
-//    }
+    @GetMapping(path = "/users/{userId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        return ResponseEntity.ok(user.get());
+    }
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveUser(@RequestBody User user) {
+    @PostMapping(path = "/addUser", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void saveUser(@RequestBody User user) {
         User save = userRepository.save(user);
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(save.getId())
-                .toUri();
-        return ResponseEntity.created(location).body(save);
+//        URI location = ServletUriComponentsBuilder
+//                .fromCurrentRequest()
+//                .path("/{id}")
+//                .buildAndExpand(save.getId())
+//                .toUri();
+//        return ResponseEntity.created(location).body(save)
+//        return "Użytkownik poprawnie dodany";
     }
 }

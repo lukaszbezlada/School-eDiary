@@ -2,6 +2,7 @@ package com.lukaszbezlada.studentdiary.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -22,8 +23,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         http
                 .authorizeRequests()
-                .antMatchers("/static/**", "/css/**", "/img/**", "/js/**").permitAll()
-                .antMatchers("/", "/api/**").permitAll()
+                .antMatchers("/api/**").permitAll()
+                .antMatchers("/static/**", "/css/**", "/img/**", "/js/**", "/*.js", "http://localhost:4200/**").permitAll()
+                .antMatchers(HttpMethod.POST, "api/addUser").permitAll()
+                .antMatchers("/", "api/addUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()

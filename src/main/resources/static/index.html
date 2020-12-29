@@ -38,30 +38,6 @@
         </div>
     </nav>
 
-    <main role="main" class="container">
-
-        <div class="starter-template">
-            <h1>E-dziennik</h1>
-
-            <form>
-                <input type="text" ng-model="userControl.user.login" placeholder="Login"><br>
-                <input type="text" ng-model="userControl.user.firstName" placeholder="Imię"><br>
-                <input type="text" ng-model="userControl.user.lastName" placeholder="Nazwisko"><br>
-                <button ng-click="userControl.addUser(userControl.user)">Dodaj użytkownika</button>
-            </form>
-            <ul>
-                <li ng-repeat="u in userControl.users" ng-click="userControl.loadData(u.id)">
-                    {{u.login}} - {{u.firstName}}
-                </li>
-            </ul>
-
-            <div ng-show="userControl.details">
-                <h2>{{userControl.details.name}}</h2>
-                <p>Użytkownik: {{userControl.details.login}}, Imię: {{userControl.details.firstName}} </p>
-            </div>
-        </div>
-
-    </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
