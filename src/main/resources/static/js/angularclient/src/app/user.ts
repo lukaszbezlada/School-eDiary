@@ -1,19 +1,14 @@
 export class User {
-
-  id: string;
-  login: string;
-  password: string;
-  password2: string;
+  constructor (
+  id: number,
+  login: string,
+  password: string,
+  password2: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  roles: string
+){}
 }
 
-// String
-// firstName;
-//
-// String
-// lastName;
-//
-// String
-// email;
-//
-// Set < UserRole > roles = new HashSet<>();
 
