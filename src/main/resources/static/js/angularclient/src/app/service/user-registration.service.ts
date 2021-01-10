@@ -10,6 +10,6 @@ export class UserRegistrationService {
   constructor(private http:HttpClient) { }
 
   public doRegistration(user: User) {
-    return this.http.post("http://localhost:8080/api/users/addUser", user, {responseType:"text" as 'json'});
+    return this.http.post("http://localhost:8080/api/addUser", user, {responseType:"text" as 'json'});
   }
 }

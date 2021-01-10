@@ -22,11 +22,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/static/**", "/css/**", "/img/**", "/js/**", "/*.js", "http://localhost:4200/**").permitAll()
-                .antMatchers(HttpMethod.POST, "api/addUser").permitAll()
-                .antMatchers("/", "api/addUser").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/addUser").permitAll()
+                .antMatchers("/", "/api/addUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
