@@ -1,46 +1,43 @@
-<form>
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label>Login</label>
-    <input type="text" class="form-control" placeholder="Login">
+<br> <br> <br> <br> <br> <br> <br> <br>
+<h2>Rejestracja</h2>
+<form (ngSubmit)="addUser()">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Login</label>
+      <input type="text" class="form-control" placeholder="Login" [(ngModel)]="model.login">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Hasło</label>
+      <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" [(ngModel)]="model.password">
+    </div>
   </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Hasło</label>
-    <input type="password" class="form-control" id="inputPassword4" placeholder="Hasło">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Powtórz hasło</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Powtórz hasło">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Imię</label>
+      <input type="text" class="form-control" placeholder="Imię" [(ngModel)]="model.firstName">
+    </div>
   </div>
-</div>
-<div class="form-group">
-  <label>Imię</label>
-  <input type="text" class="form-control" id="inputAddress" placeholder="Imię">
-</div>
-<div class="form-group">
-  <label for="inputAddress2">Address 2</label>
-  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-</div>
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputCity">City</label>
-    <input type="text" class="form-control" id="inputCity">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Nazwisko</label>
+      <input type="text" class="form-control" placeholder="Nazwisko" [(ngModel)]="model.lastName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="model.email">
+    </div>
   </div>
-  <div class="form-group col-md-4">
-    <label for="inputState">State</label>
-    <select id="inputState" class="form-control">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
   </div>
-  <div class="form-group col-md-2">
-    <label for="inputZip">Zip</label>
-    <input type="text" class="form-control" id="inputZip">
-  </div>
-</div>
-<div class="form-group">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="gridCheck">
-    <label class="form-check-label" for="gridCheck">
-      Check me out
-    </label>
-  </div>
-</div>
-<button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-primary">Zarejestruj</button>
 </form>

@@ -7,6 +7,8 @@ import {RegistrationComponent} from './registration/registration.component';
 import {LoginComponent} from './login/login.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {Router, Routes, RouterModule} from '@angular/router';
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [
   {
@@ -38,6 +40,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
