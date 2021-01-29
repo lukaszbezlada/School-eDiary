@@ -1,5 +1,5 @@
 # School e-Diary
----Project in its initial phase--- Application for teachers, students and parents. 
+---Project under development--- Application for teachers, students and parents. 
 
 ## Table of contents
 * [General info](#general-info)
@@ -32,7 +32,7 @@ What is done?
 - database structure and connection
 - entities of few kinds of users
 - validating fields in entities
-- Angular installation
+- registration verification with form validation with Angular 
 
 ## Technologies
 * Spring Framework
