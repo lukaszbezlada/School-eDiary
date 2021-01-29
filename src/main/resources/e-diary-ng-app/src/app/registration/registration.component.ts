@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
     lastName: '',
     login: '',
     password: '',
+    password2: '',
   };
 
   constructor(private http: HttpClient) {
@@ -43,4 +44,5 @@ export interface User {
   lastName: string;
   login: string;
   password: string;
+  password2: string;
 }

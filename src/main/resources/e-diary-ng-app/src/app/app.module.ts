@@ -9,6 +9,8 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {Router, Routes, RouterModule} from '@angular/router';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {UsersComponent} from './users/users.component';
+import { ValidateEqualModule } from 'ng-validate-equal';
 
 const routes: Routes = [
   {
@@ -36,13 +38,15 @@ const routes: Routes = [
     NavigationComponent,
     RegistrationComponent,
     LoginComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {enableTracing: true}),
+    ValidateEqualModule
   ],
   providers: [],
   bootstrap: [AppComponent]

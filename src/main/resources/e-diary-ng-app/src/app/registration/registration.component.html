@@ -1,35 +1,99 @@
 <br> <br> <br> <br> <br> <br> <br> <br>
 <h2>Rejestracja</h2>
-<form (ngSubmit)="addUser()">
+<form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addUser()">
   <div class="form-row">
     <div class="form-group col-md-6">
+
       <label>Login</label>
-      <input type="text" class="form-control" placeholder="Login" [(ngModel)]="model.login">
+      <input type="text" class="form-control" placeholder="Login" name="login"
+             [(ngModel)]="model.login"
+             #login="ngModel" [ngClass]="{'is-invalid' : f.submitted && login.invalid}"
+             required>
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && login.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="login.errors?.required">Login nie jest poprawny</div>
+      </div>
     </div>
+
     <div class="form-group col-md-6">
       <label for="inputPassword4">Hasło</label>
-      <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" [(ngModel)]="model.password">
+      <input type="password" class="form-control" id="inputPassword" placeholder="Hasło" name="password"
+             [(ngModel)]="model.password"
+             #password="ngModel" [ngClass]="{'is-invalid' : f.submitted && password.invalid}"
+             required minlength="8" maxlength="20">
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && password.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="password.errors?.required">Hasło jest wymagane</div>
+        <div *ngIf="password.errors?.minlength">Hasło powinno zawierać min 8 znaków, max 10</div>
+      </div>
     </div>
+
   </div>
   <div class="form-row">
+
     <div class="form-group col-md-6">
       <label for="inputPassword4">Powtórz hasło</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Powtórz hasło">
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Powtórz hasło" name="password2"
+             ngValidateEqual="password"
+             [(ngModel)]="model.password2"
+             #password2="ngModel" [ngClass]="{'is-invalid' : f.submitted && password2.invalid}"
+             required minlength="8" maxlength="20">
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && password2.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="password2.errors?.required">Hasło jest wymagane</div>
+        <div *ngIf="password2.errors?.minlength">Hasło powinno zawierać min 8 znaków, max 10</div>
+        <div *ngIf="(password2.dirty || password2.touched) && password2.invalid">Hasła są różne!</div>
+      </div>
     </div>
+
     <div class="form-group col-md-6">
       <label>Imię</label>
-      <input type="text" class="form-control" placeholder="Imię" [(ngModel)]="model.firstName">
+      <input type="text" class="form-control" placeholder="Imię" name="firstName"
+             [(ngModel)]="model.firstName"
+             #firstName="ngModel" [ngClass]="{'is-invalid' : f.submitted && firstName.invalid}"
+             required minlength="3" maxlength="10">
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && firstName.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="firstName.errors?.required">Imię jest wymagane</div>
+        <div *ngIf="firstName.errors?.minlength">Imię powinno zawierać min 3 znaki</div>
+      </div>
     </div>
+
   </div>
   <div class="form-row">
+
     <div class="form-group col-md-6">
       <label>Nazwisko</label>
-      <input type="text" class="form-control" placeholder="Nazwisko" [(ngModel)]="model.lastName">
+      <input type="text" class="form-control" placeholder="Nazwisko" name="lastName"
+             [(ngModel)]="model.lastName"
+             #lastName="ngModel" [ngClass]="{'is-invalid' : f.submitted && lastName.invalid}"
+             required minlength="3" maxlength="10">
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && lastName.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="lastName.errors?.required">Nazwisko jest wymagane</div>
+        <div *ngIf="lastName.errors?.minlength">Nazwisko powinno zawierać min 3 znaki</div>
+      </div>
     </div>
+
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" [(ngModel)]="model.email">
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email"
+             [(ngModel)]="model.email"
+             #email="ngModel" [ngClass]="{'is-invalid' : f.submitted && email.invalid}"
+             required email>
+      <!--      grupowa walidacja-->
+      <div *ngIf="f.submitted && email.invalid" class="invalid-input">
+        <!--        indywidualna walidacja-->
+        <div *ngIf="email.errors?.required">Email jest wymagany</div>
+        <div *ngIf="email.errors?.email">Email nie jest poprawny</div>
+      </div>
     </div>
+
   </div>
   <div class="form-group">
     <div class="form-check">

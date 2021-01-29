@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String login;
 
     @Column
-    @NotEmpty
+    @Pattern(regexp = "^[\\p{Alnum}]{8,10}$")
     private String password;
 
     @Transient
