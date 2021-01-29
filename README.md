@@ -18,21 +18,21 @@ On creating page, teachers, students and their parents will can use as a normal 
 
 ## TODO/DONE list
 
-TODO list:
-- UI
-- adding users
-- managment users
-- adding marks by teachers
-- view school grade by students and parents
-- tests
-
 What is done?
 - layout
 - project structure
 - database structure and connection
 - entities of few kinds of users
 - validating fields in entities
+- navigation component with Angular
+- student registration
 - registration verification with form validation with Angular 
+
+TODO list:
+- registration other users (teachers, parents)
+- adding marks by teachers
+- view school grade by students and parents
+- tests
 
 ## Technologies
 * Spring Framework
