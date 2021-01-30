@@ -2,16 +2,14 @@ package com.lukaszbezlada.studentdiary.controller;
 
 import com.lukaszbezlada.studentdiary.entity.User;
 import com.lukaszbezlada.studentdiary.repository.UserRepository;
+import com.lukaszbezlada.studentdiary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,10 +19,12 @@ import java.util.Optional;
 public class UserController {
 
     private UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,12 +41,11 @@ public class UserController {
 
     @PostMapping(path = "/addUser")
     public void saveUser(@RequestBody User user, BindingResult bindingResult) {
-//
+
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
         }
-        System.out.println("TO JEST EMAIL:" + user.getEmail());
-        userRepository.save(user);
+        userService.addUserWithEncryptedPassword(user);
     }
 }

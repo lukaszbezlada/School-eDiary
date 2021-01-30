@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -30,7 +31,7 @@ public class User implements Serializable {
     private String login;
 
     @Column
-    @Pattern(regexp = "^[\\p{Alnum}]{8,10}$")
+    @NotNull
     private String password;
 
     @Transient
