@@ -10,7 +10,7 @@ import {Router, Routes, RouterModule} from '@angular/router';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {UsersComponent} from './users/users.component';
-import { ValidateEqualModule } from 'ng-validate-equal';
+import {ValidateEqualModule} from 'ng-validate-equal';
 
 const routes: Routes = [
   {
@@ -29,6 +29,10 @@ const routes: Routes = [
     path: '',
     component: LoginComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
   }
 ]
 

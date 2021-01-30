@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {HttpClient} from "@angular/common/http";
+import {UserService} from "../service/user.service";
 
 @Component({
   selector: 'app-registration',
@@ -17,24 +17,21 @@ export class RegistrationComponent implements OnInit {
     password2: '',
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
   }
 
   addUser(): void {
-    let url = "http://localhost:8080/api/addUser";
-    this.http.post(url, this.model).subscribe(
-      res => {
-        // @ts-ignore
-        location.reload();
-      },
+    let resp = this.userService.addUser(this.model).subscribe(
+    resp => {
+      location.reload();
+    },
       err => {
-        // @ts-ignore
         alert("Błąd w rejestracji użytkownika")
       }
-    )
+  )
   }
 }
 
