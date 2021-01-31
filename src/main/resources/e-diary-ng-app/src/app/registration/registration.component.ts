@@ -8,13 +8,14 @@ import {UserService} from "../service/user.service";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  model: User = {
+  model: UserDTO = {
     email: '',
     firstName: '',
     lastName: '',
     login: '',
     password: '',
     password2: '',
+    subject: '',
   };
 
   constructor(private userService: UserService) {
@@ -35,11 +36,16 @@ export class RegistrationComponent implements OnInit {
   }
 }
 
-export interface User {
+export interface UserDTO {
   email: string;
   firstName: string;
   lastName: string;
   login: string;
   password: string;
   password2: string;
+  subject: string;
+  // parent: string;
+  // grades: number;
+  // classType: any;
+  // childs: any;
 }

@@ -2,7 +2,8 @@ package com.lukaszbezlada.studentdiary.controller;
 
 import com.lukaszbezlada.studentdiary.entity.User;
 import com.lukaszbezlada.studentdiary.repository.UserRepository;
-import com.lukaszbezlada.studentdiary.service.UserService;
+import com.lukaszbezlada.studentdiary.service.UserDTO;
+import com.lukaszbezlada.studentdiary.service.UserDTOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,12 +20,12 @@ import java.util.Optional;
 public class UserController {
 
     private UserRepository userRepository;
-    private final UserService userService;
+    private final UserDTOService userDTOService;
 
     @Autowired
-    public UserController(UserRepository userRepository, UserService userService) {
+    public UserController(UserRepository userRepository, UserDTOService userService) {
         this.userRepository = userRepository;
-        this.userService = userService;
+        this.userDTOService = userService;
     }
 
     @GetMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,12 +41,12 @@ public class UserController {
     }
 
     @PostMapping(path = "/addUser")
-    public void saveUser(@RequestBody User user, BindingResult bindingResult) {
+    public void saveUser(@RequestBody UserDTO userDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             errors.forEach(err -> System.out.println(err.getDefaultMessage()));
         }
-        userService.addUserWithEncryptedPassword(user);
+        userDTOService.addSuitableUserWithEncryptedPassword(userDTO);
     }
 }
