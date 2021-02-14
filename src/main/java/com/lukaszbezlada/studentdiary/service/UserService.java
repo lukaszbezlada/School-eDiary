@@ -10,7 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDTOService {
+public class UserService {
+
+    @Autowired
+    UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
     private final TeacherRepository teacherRepository;
@@ -18,7 +21,7 @@ public class UserDTOService {
     private final UserRoleRepository roleRepository;
 
     @Autowired
-    public UserDTOService(PasswordEncoder passwordEncoder, TeacherRepository teacherRepository, StudentRepository studentRepository, UserRoleRepository roleRepository) {
+    public UserService(PasswordEncoder passwordEncoder, TeacherRepository teacherRepository, StudentRepository studentRepository, UserRoleRepository roleRepository) {
         this.passwordEncoder = passwordEncoder;
         this.teacherRepository = teacherRepository;
         this.studentRepository = studentRepository;
@@ -28,31 +31,33 @@ public class UserDTOService {
 
     public void addSuitableUserWithEncryptedPassword(UserDTO userDTO) {
         if (userDTO.getSubject() != null) {
-            UserRole defaultRole = roleRepository.findByRole(2);
-            userDTO.getRoles().add(defaultRole);
             passwordEncrypting(userDTO);
             addTeacher(userDTO);
         }
-        if (userDTO.getClassType() != null) {
-            addStudent(userDTO);
-        }
     }
+
 
     public void passwordEncrypting(UserDTO userDTO) {
         String passwordHash = passwordEncoder.encode(userDTO.getPassword());
         userDTO.setPassword(passwordHash);
     }
 
-    public void addTeacher(UserDTO<Teacher> userDTO) {
-        // userDTO = new UserDTO<Teacher>(new Teacher());
-        Teacher teacher = userDTO.getUser();
+    public void addTeacher(UserDTO userDTO) {
+        Teacher teacher = Teacher.fromDTO(userDTO);
         teacherRepository.save(teacher);
     }
 
-    public void addStudent(UserDTO<Student> userDTO) {
-        Student student = userDTO.getUser();
-        studentRepository.save(student);
-    }
+//    public void addStudent(UserDTO<Student> userDTO) {
+//        userDTO = new UserDTO<Student>(new Student());
+//        Student student = userDTO.getUser();
+//        studentRepository.save(student);
+//    }
+//
+//    public void addUser(UserDTO<User> userDTO) {
+//        userDTO = new UserDTO<User>(new User());
+//        User user = userDTO.getUser();
+//        userRepository.save(user);
+//    }
 
 
 }

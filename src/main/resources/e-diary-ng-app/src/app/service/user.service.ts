@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {User} from "../registration/registration.component";
+import {UserDTO} from "../registration/registration.component";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,16 @@ export class UserService {
     return this.http.get<User[]>(this.ALL_USER_URL);
   }
 
-  addUser(user: User): Observable<any> {
-    return this.http.post(this.ADD_USER_URL, user, {responseType:'text' as 'json'})
+  addUser(userDTO: UserDTO): Observable<any> {
+    return this.http.post(this.ADD_USER_URL, userDTO, {responseType:'text' as 'json'})
   }
+}
+
+export interface User {
+  email: string;
+  firstName: string;
+  lastName: string;
+  login: string;
+  password: string;
+  password2: string;
 }

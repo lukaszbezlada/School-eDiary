@@ -3,7 +3,7 @@ package com.lukaszbezlada.studentdiary.controller;
 import com.lukaszbezlada.studentdiary.entity.User;
 import com.lukaszbezlada.studentdiary.repository.UserRepository;
 import com.lukaszbezlada.studentdiary.service.UserDTO;
-import com.lukaszbezlada.studentdiary.service.UserDTOService;
+import com.lukaszbezlada.studentdiary.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +20,10 @@ import java.util.Optional;
 public class UserController {
 
     private UserRepository userRepository;
-    private final UserDTOService userDTOService;
+    private final UserService userDTOService;
 
     @Autowired
-    public UserController(UserRepository userRepository, UserDTOService userService) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
         this.userDTOService = userService;
     }

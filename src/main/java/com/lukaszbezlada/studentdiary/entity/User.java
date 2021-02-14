@@ -55,4 +55,15 @@ public class User implements Serializable {
     public User() {
         //for Spring Data JPA
     }
+
+    public User(@Pattern(regexp = "^[\\p{Alnum}]{3,10}$") String login, @NotNull String password, @Pattern(regexp = "^[\\p{Alnum}]{3,10}$") String firstName, @Pattern(regexp = "^[\\p{Alnum}]{3,20}$") String lastName, @Email @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$") String email, Set<UserRole> roles) {
+        this.login = login;
+        this.password = password;
+        this.password2 = password2;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.roles = roles;
+    }
 }
+

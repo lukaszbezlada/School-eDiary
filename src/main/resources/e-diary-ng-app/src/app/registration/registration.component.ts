@@ -43,7 +43,7 @@ export interface UserDTO {
   login: string;
   password: string;
   password2: string;
-  subject: string;
+  subject: any;
   // parent: string;
   // grades: number;
   // classType: any;

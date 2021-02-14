@@ -9,7 +9,7 @@ public class UserRole {
     private Long id;
 
     @Column
-    private UserRoleEnum role;
+    private String role;
 
     @Column
     private String description;
@@ -22,11 +22,11 @@ public class UserRole {
         this.id = id;
     }
 
-    public UserRoleEnum getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(UserRoleEnum role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
