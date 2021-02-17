@@ -4,5 +4,10 @@ public enum SubjectEnum {
     JĘZYK_POLSKI,
     MATEMATYKA,
     HISTORIA,
-    GEOGRAFIA;
+    GEOGRAFIA,
+    FIZYKA,
+    BIOLOGIA,
+    CHEMIA,
+    MUZYKA,
+    BRAK;
 }

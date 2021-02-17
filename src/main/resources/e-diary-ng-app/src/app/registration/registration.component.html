@@ -103,7 +103,10 @@
   <!--<div *ngIf="f.submitted && subject.invalid" class="invalid-input">-->
   <!--  &lt;!&ndash;        indywidualna walidacja&ndash;&gt;-->
   <!--  <div *ngIf="subject.errors?.required">Przedmiot nie jest poprawny</div>-->
-<!--  </div>-->
+  <!--  </div>-->
+
+  <input type="text" class="form-control" placeholder="Klasa" name="classType"
+         [(ngModel)]="model.classType">
 
   <div class="form-group">
     <div class="form-check">
