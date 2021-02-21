@@ -1,9 +1,14 @@
 package com.lukaszbezlada.studentdiary.repository;
 
 import com.lukaszbezlada.studentdiary.entity.ClassType;
-import com.lukaszbezlada.studentdiary.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface ClassTypeRepository extends JpaRepository<UserRole, Long> {
-    ClassType findByClass(ClassType classType);
+import java.util.Optional;
+
+@Transactional
+@Repository
+public interface ClassTypeRepository extends JpaRepository<ClassType, Long> {
+    Optional<ClassType> findByName(String name);
 }

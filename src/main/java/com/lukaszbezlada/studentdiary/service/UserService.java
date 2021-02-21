@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -28,7 +30,7 @@ public class UserService {
     }
 
 
-    public void addSuitableUserWithEncryptedPassword(UserDTO userDTO) {
+    public void addSuitableUserWithEncryptedPassword(UserDTO userDTO) throws Exception {
         passwordEncrypting(userDTO);
         if (userDTO.getSubject() != null) {
             addTeacher(userDTO);
@@ -47,18 +49,11 @@ public class UserService {
         teacherRepository.save(teacher);
     }
 
-    public void addStudent(UserDTO userDTO) {
+    public void addStudent(UserDTO userDTO) throws Exception {
         SubjectEnum subject = userDTO.getSubject();
         Student student = createStudentFromDTO(userDTO);
         studentRepository.save(student);
     }
-
-//    public void addUser(UserDTO<User> userDTO) {
-//        userDTO = new UserDTO<User>(new User());
-//        User user = userDTO.getUser();
-//        userRepository.save(user);
-//    }
-
 
     public static Teacher createTeacherFromDTO(UserDTO dto) {
         UserRole teacherRole = roleRepository.findByRole("TEACHER");
@@ -68,14 +63,16 @@ public class UserService {
         return new Teacher(null, user, dto.getSubject());
     }
 
-    public static Student createStudentFromDTO(UserDTO dto) {
-        UserRole teacherRole = roleRepository.findByRole("STUDENT");
-        dto.getRoles().add(teacherRole);
-        ClassType classType = classTypeRepository.findByClass(dto.getClassType());
+    public static Student createStudentFromDTO(UserDTO dto) throws Exception {
+        UserRole studentRole = roleRepository.findByRole("STUDENT");
+        dto.getRoles().add(studentRole);
         User user = new User(dto.getLogin(), dto.getPassword(), dto.getFirstName(),
                 dto.getLastName(), dto.getEmail(), dto.getRoles());
-        return new Student(null, user, classType, null, null);
+        String classType = String.valueOf(dto.getClassType());
+        Optional<ClassType> studentClassTypeOptional = classTypeRepository.findByName(classType);
+        if (studentClassTypeOptional.isPresent()) {
+            ClassType studentClassType = studentClassTypeOptional.get();
+            return new Student(null, user, studentClassType, null, null);
+        } else throw new Exception("Nie znaleziono klasy");
     }
-
-
 }

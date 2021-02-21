@@ -41,7 +41,7 @@ public class UserController {
     }
 
     @PostMapping(path = "/addUser")
-    public void saveUser(@RequestBody UserDTO userDTO, BindingResult bindingResult) {
+    public void saveUser(@RequestBody UserDTO userDTO, BindingResult bindingResult) throws Exception {
 
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
