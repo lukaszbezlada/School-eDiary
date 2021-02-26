@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -26,4 +27,16 @@ public class Parent implements Serializable {
         //for JPA
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Parent parent = (Parent) o;
+        return Objects.equals(id, parent.id) && Objects.equals(user, parent.user) && Objects.equals(childs, parent.childs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, childs);
+    }
 }

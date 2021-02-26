@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Data
 @AllArgsConstructor
@@ -27,5 +28,18 @@ public class Teacher implements Serializable {
 
     public Teacher() {
         //for Spring Data JPA
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return Objects.equals(id, teacher.id) && Objects.equals(user, teacher.user) && subject == teacher.subject;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, subject);
     }
 }
