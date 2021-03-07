@@ -3,6 +3,7 @@ package com.lukaszbezlada.studentdiary.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @Entity
 public class ClassType implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6359254733772657789L;
 
     @Id

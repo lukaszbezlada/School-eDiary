@@ -24,7 +24,7 @@ public class UserDTO {
     private SubjectEnum subject;
     private Parent parent;
     private List<Grade> grades;
-    private ClassType classType;
+    private String classTypeName;
     private List<Student> childs;
 
     public UserDTO() {

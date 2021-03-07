@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,6 +21,7 @@ import java.util.Set;
 @Table(name = "user")
 public class User implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 6359254733772657789L;
 
     @Id

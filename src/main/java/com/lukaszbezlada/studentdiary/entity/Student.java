@@ -20,7 +20,7 @@ public class Student implements Serializable {
     @OneToOne(cascade = CascadeType.PERSIST)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_classtype")
     private ClassType classType;
 

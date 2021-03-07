@@ -16,7 +16,7 @@ export class RegistrationComponent implements OnInit {
     password: '',
     password2: '',
     subject: '',
-    classType: '',
+    classTypeName: '',
   };
 
   constructor(private userService: UserService) {
@@ -47,6 +47,6 @@ export interface UserDTO {
   subject: any;
   // parent: string;
   // grades: number;
-  classType: any;
+  classTypeName: string;
   // childs: any;
 }

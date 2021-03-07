@@ -1,5 +1,13 @@
 <h2>Rejestracja</h2>
 <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && addUser()">
+  <label>
+    <select name="userRole" class="form-control">
+      <option>Administrator</option>
+      <option>Nauczyciel</option>
+      <option>Student</option>
+      <option>Rodzic</option>
+    </select>
+  </label>
   <div class="form-row">
     <div class="form-group col-md-6">
 
@@ -106,7 +114,7 @@
   <!--  </div>-->
 
   <input type="text" class="form-control" placeholder="Klasa" name="classType"
-         [(ngModel)]="model.classType">
+         [(ngModel)]="model.classTypeName">
 
   <div class="form-group">
     <div class="form-check">
