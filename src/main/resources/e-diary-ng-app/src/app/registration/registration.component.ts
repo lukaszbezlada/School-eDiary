@@ -45,8 +45,8 @@ export interface UserDTO {
   password: string;
   password2: string;
   subject: any;
-  // parent: string;
-  // grades: number;
   classTypeName: string;
   // childs: any;
+  // parent: string;
+  // grades: number;
 }

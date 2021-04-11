@@ -8,7 +8,7 @@ import {UserDTO} from "../registration/registration.component";
 })
 export class UserService {
   private BASE_URL = "http://localhost:4200/api";
-  private ALL_USER_URL = "http://localhost:4200/api/users";
+  private ALL_USER_URL = "http://localhost:8080/api/users";
   private ADD_USER_URL = "http://localhost:8080/api/addUser";
 
   constructor(private http: HttpClient) {
